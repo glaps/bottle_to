@@ -20,7 +20,7 @@
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8">
-                <form class="form-group" method="post"  action="/">
+                <form class="form-group" method="post"  action="/result">
                         <div class="form-group">
                             <label for="date1">ДАТА З:</label>
                             <input name="date1" type="date" class="form-control" id="date1" placeholder="2018-06-18">
@@ -35,14 +35,14 @@
             <div class="col-md-2"></div>
          </div>       
     </div>
-    % if result:
+    % if result and result_for_day:
     <div class="container">
         <table class="table table-dark">
             <thead>
                 <tr>
-                    <th scope="col">З</th>
-                    <th scope="col">ПО</th>
-                    <th scope="col">ЛИСТИ</th>
+                    <th  scope="col">З {{a}}</th>
+                    <th scope="col">По {{b}}</th>
+                    <th scope="col">Всьго Листів</th>
                 </tr>
             </thead>
             <tbody>
@@ -51,6 +51,24 @@
                     <td>{{b}}</td>
                     <td>{{result}}</td>
                 </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="container">
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th  scope="col">По дням</th>
+                    <th scope="col">Кількість</th>
+                </tr>
+            </thead>
+            <tbody>
+                % for d,c in result_for_day:
+                <tr>
+                    <td>{{d}}</td>
+                    <td>{{c}}</td>
+                </tr>
+                % end
             </tbody>
         </table>
     </div>

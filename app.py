@@ -11,8 +11,8 @@ def index():
 def pstdata():
     a = request.forms.get("date1")
     b = request.forms.get("date2")
-    the = (dt.datetime.strptime(b.replace("-"," "),"%Y %m %d")+dt.timedelta(days=1)).strftime("%Y-%m-%d")
-    if a and the:
+    if a and b:
+        the = (dt.datetime.strptime(b.replace("-"," "),"%Y %m %d")+dt.timedelta(days=1)).strftime("%Y-%m-%d")
         result, result_for_day = sqlquery(a,the)
         return template("index",a=a,b=b,result=result, result_for_day=result_for_day)
     else:  return template("index",a="",b="",result="",result_for_day=[])
